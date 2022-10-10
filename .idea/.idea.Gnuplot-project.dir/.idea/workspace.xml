@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ebe089e-714f-4791-af9a-9d2068c78f02" name="Default Changelist" comment="" />
+    <list default="true" id="8ebe089e-714f-4791-af9a-9d2068c78f02" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/GnuplotBackEnd/.idea/.idea.GnuplotBackEnd/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/GnuplotBackEnd/.idea/.idea.GnuplotBackEnd/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GnuplotBackEnd/.idea/.idea.GnuplotBackEnd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/GnuplotBackEnd/.idea/.idea.GnuplotBackEnd/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GnuplotBackEnd/GnuplotBackEnd/GnuplotBackEnd.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GnuplotBackEnd/GnuplotBackEnd/GnuplotBackEnd.csproj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2FuulKqoalWVIYhWP5WpiWM0vkw" />
   <component name="ProjectViewState">
@@ -15,6 +22,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -26,10 +34,14 @@
       <option name="presentableId" value="Default" />
       <updated>1665354447010</updated>
       <workItem from="1665354448758" duration="66000" />
+      <workItem from="1665359549939" duration="318000" />
     </task>
     <servers />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
