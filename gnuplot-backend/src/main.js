@@ -6,4 +6,11 @@ import store from './store'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 
-createApp(App).use(store).use(router).mount('#app')
+const app = createApp(App).use(store).use(router)
+
+import components from '@/components/UI'
+components.forEach(component =>{
+    app.component(component.name, component)
+})
+
+app.mount('#app')
