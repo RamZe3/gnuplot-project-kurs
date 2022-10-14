@@ -32,10 +32,12 @@ export default {
   },
   methods: {
     updateInput1(event) {
-      this.$emit('update:value1', event.target.value)
+      //this.$emit('update:value1', event.target.value)
+      this.$emit('updateInput', event.target.value)
     },
     updateInput2(event) {
-      this.$emit('update:value2', event.target.value)
+      //this.$emit('update:value2', event.target.value)
+      this.$emit('updateInput2', event.target.value)
     }
   }
 }
