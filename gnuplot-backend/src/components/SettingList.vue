@@ -68,37 +68,59 @@
   <div class="row buttons">
     <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
   </div>
+  <h1>{{this.$store.getters.SETTINGS}}</h1>
 </template>
 
 <script>
 import SettingItem from "@/components/SettingItem";
+import {useSettings} from "@/hooks/useSettings";
+import {useSettingInputs} from "@/hooks/useSettingInputs";
 
 export default {
   name: "setting-list",
   components: {SettingItem},
-  data() {
+  //data() {
+  //  return {
+  //    settings: {
+  //      function: '',
+  //      Range1: '',
+  //      Range2: '',
+  //      Point: '',
+  //      Code: '',
+  //    },
+  //    settingInputs: [
+  //      {id: 1, type: 'base', title: 'Function', placeholder: 'sin(x)'},
+  //      {id: 2, type: 'double', title: 'Range', placeholder1: '0', placeholder2: '3'},
+  //      {
+  //        id: 3, type: 'options', title: 'Function', options: [
+  //          {title: 'option1', value: '1'},
+  //          {title: 'option2', value: '2'}
+  //        ]
+  //      },
+  //      {id: 2, type: 'area', title: 'textArea', placeholder: 'Write commands here'},
+  //    ]
+  //  }
+  //},
+  setup(props) {
+    const {settings, loadSettings, saveSettings } = useSettings()
+    const {settingInputs} = useSettingInputs()
     return {
-      settings: {
-        function: '',
-        Range1: '',
-        Range2: '',
-        Point: '',
-        Code: '',
-      },
-      settingInputs: [
-        {id: 1, type: 'base', title: 'Function', placeholder: 'sin(x)'},
-        {id: 2, type: 'double', title: 'Range', placeholder1: '0', placeholder2: '3'},
-        {
-          id: 3, type: 'options', title: 'Function', options: [
-            {title: 'option1', value: '1'},
-            {title: 'option2', value: '2'}
-          ]
-        },
-        {id: 2, type: 'area', title: 'textArea', placeholder: 'Write commands here'},
-      ]
+      settings, saveSettings, loadSettings,
+      settingInputs
     }
+  },
+  mounted() {
+    //this.$store.commit("setSettings", {
+    //        function: '12345',
+    //        Range1: '',
+    //        Range2: '',
+    //        Point: '',
+    //        Code: '',
+    //      })
+    this.loadSettings(this.$store.getters.SETTINGS)
   }
 }
+//console.log(this.$store.getters.SETTINGS)
 </script>
 
 <style scoped>

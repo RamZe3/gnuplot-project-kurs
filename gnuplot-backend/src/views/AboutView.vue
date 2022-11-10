@@ -31,5 +31,20 @@
     </tbody>
   </table>
 </template>
+<script>
+export default {
+  //TODO логика загрузки шаблона
+  //mounted() {
+  //  this.$store.commit("setSettings", {
+  //    function: '12345',
+  //    Range1: '',
+  //    Range2: '',
+  //    Point: '',
+  //    Code: '',
+  //  })
+  //}
+}
+
+</script>
 <style scoped>
 </style>
