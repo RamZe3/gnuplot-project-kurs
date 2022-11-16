@@ -17,13 +17,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c426405-5cf8-47f9-b6a3-407c0f63c484" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GnuplotBackEnd/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GnuplotBackEnd/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GnuplotBackEnd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GnuplotBackEnd/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GnuplotBackEnd/GnuplotBackEnd.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GnuplotBackEnd/GnuplotBackEnd.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GnuplotBackEnd/bin/Debug/net5.0/GnuplotBackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/GnuplotBackEnd/bin/Debug/net5.0/GnuplotBackEnd.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GnuplotBackEnd/bin/Debug/net5.0/GnuplotBackEnd.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/GnuplotBackEnd/bin/Debug/net5.0/GnuplotBackEnd.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GnuplotBackEnd/bin/Debug/net5.0/ref/GnuplotBackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/GnuplotBackEnd/bin/Debug/net5.0/ref/GnuplotBackEnd.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GnuplotBackEnd/obj/Debug/net5.0/GnuplotBackEnd.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/GnuplotBackEnd/obj/Debug/net5.0/GnuplotBackEnd.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GnuplotBackEnd/obj/Debug/net5.0/GnuplotBackEnd.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/GnuplotBackEnd/obj/Debug/net5.0/GnuplotBackEnd.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GnuplotBackEnd/obj/Debug/net5.0/GnuplotBackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/GnuplotBackEnd/obj/Debug/net5.0/GnuplotBackEnd.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GnuplotBackEnd/obj/Debug/net5.0/GnuplotBackEnd.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/GnuplotBackEnd/obj/Debug/net5.0/GnuplotBackEnd.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GnuplotBackEnd/obj/Debug/net5.0/ref/GnuplotBackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/GnuplotBackEnd/obj/Debug/net5.0/ref/GnuplotBackEnd.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnuplot-backend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gnuplot-backend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnuplot-backend/src/components/UI/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gnuplot-backend/src/components/UI/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnuplot-backend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gnuplot-backend/src/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +45,9 @@
       <list>
         <option value="$PROJECT_DIR$/GnuplotBackEnd/Entities/GnuplotTemplate.cs" />
         <option value="$PROJECT_DIR$/GnuplotBackEnd/BLL/GnuplotLogic.cs" />
+        <option value="$PROJECT_DIR$/GnuplotBackEnd/DAL/Interfaces/UserDALInterface.cs" />
+        <option value="$PROJECT_DIR$/GnuplotBackEnd/Entities/ActiveUser.cs" />
+        <option value="$PROJECT_DIR$/GnuplotBackEnd/DAL/JsonDAL/UserJsonDAL.cs" />
       </list>
     </option>
   </component>
@@ -98,6 +108,8 @@
       <workItem from="1665355938863" duration="230000" />
       <workItem from="1665358980626" duration="566000" />
       <workItem from="1665442955136" duration="61000" />
+      <workItem from="1668245474545" duration="27000" />
+      <workItem from="1668246285042" duration="583000" />
     </task>
     <servers />
   </component>
@@ -125,26 +137,30 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="205" key="GridCell.Tab.0.bottom" timestamp="1665443015377">
+    <state width="1921" height="210" key="GridCell.Tab.0.bottom" timestamp="1668246869812">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="205" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.161.1366.728@0.0.1920.1040" timestamp="1665443015377" />
-    <state width="1877" height="205" key="GridCell.Tab.0.center" timestamp="1665443015377">
+    <state width="1921" height="210" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.161.1366.728@0.0.1920.1040" timestamp="1668246869812" />
+    <state width="1921" height="210" key="GridCell.Tab.0.center" timestamp="1668246869812">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="205" key="GridCell.Tab.0.center/0.0.1920.1040/1920.161.1366.728@0.0.1920.1040" timestamp="1665443015377" />
-    <state width="1877" height="205" key="GridCell.Tab.0.left" timestamp="1665443015377">
+    <state width="1921" height="210" key="GridCell.Tab.0.center/0.0.1920.1040/1920.161.1366.728@0.0.1920.1040" timestamp="1668246869812" />
+    <state width="1921" height="210" key="GridCell.Tab.0.left" timestamp="1668246869812">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="205" key="GridCell.Tab.0.left/0.0.1920.1040/1920.161.1366.728@0.0.1920.1040" timestamp="1665443015377" />
-    <state width="1877" height="205" key="GridCell.Tab.0.right" timestamp="1665443015377">
+    <state width="1921" height="210" key="GridCell.Tab.0.left/0.0.1920.1040/1920.161.1366.728@0.0.1920.1040" timestamp="1668246869812" />
+    <state width="1921" height="210" key="GridCell.Tab.0.right" timestamp="1668246869812">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="205" key="GridCell.Tab.0.right/0.0.1920.1040/1920.161.1366.728@0.0.1920.1040" timestamp="1665443015377" />
+    <state width="1921" height="210" key="GridCell.Tab.0.right/0.0.1920.1040/1920.161.1366.728@0.0.1920.1040" timestamp="1668246869812" />
     <state x="552" y="252" key="Rider.ProjectTemplateDialog.Size" timestamp="1665354515344">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="252" key="Rider.ProjectTemplateDialog.Size/0.0.1920.1040/1920.161.1366.728@0.0.1920.1040" timestamp="1665354515344" />
+    <state x="782" y="221" key="RiderGenerateDialog" timestamp="1668246632153">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="782" y="221" key="RiderGenerateDialog/0.0.1920.1040/1920.161.1366.728@0.0.1920.1040" timestamp="1668246632153" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1665355089846">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

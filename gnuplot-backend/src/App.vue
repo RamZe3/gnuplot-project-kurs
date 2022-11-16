@@ -21,12 +21,12 @@
                 Профиль
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><button class="dropdown-item" data-toggle="modal" data-target="#Login">Войти</button></li>
+                <li><button class="dropdown-item" data-toggle="modal" data-target="#Register">Зарегистрироваться</button></li>
                 <li>
-                  <hr class="dropdown-divider">
+                  <hr v-if="this.$store.getters.ISAUTH" class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><button v-if="this.$store.getters.ISAUTH" class="dropdown-item" @click="signOut">Выйти</button></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -39,30 +39,27 @@
   </header>
   <main class="content ">
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Login">
       Launch demo modal
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
           <div class="modal-body">
             askldasdlk
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary">Войти</button>
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
 
     <router-view/>
   </main>
@@ -71,6 +68,54 @@
       <p>© 2022 Company, Inc. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- modals -->
+  <base-modal v-model:modalAttr="modalAttr"
+              v-bind:id="modalAttr.id"
+              @modalMethod="login"
+  >
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Логин</span>
+      <input v-model="user.Login"
+             placeholder="Логин..."
+             type="text" class="form-control"
+             aria-label="Username"
+             aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Пароль</span>
+      <input v-model="user.Password"
+             placeholder="Пароль..."
+             type="password" class="form-control"
+             aria-label="Username"
+             aria-describedby="basic-addon1">
+    </div>
+  </base-modal>
+
+  <base-modal v-model:modalAttr="modalAttr1"
+              v-bind:id="modalAttr1.id"
+              @modalMethod="register"
+  >
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Логин</span>
+      <input v-model="user.Login"
+             placeholder="Логин..."
+             type="text" class="form-control"
+             aria-label="Username"
+             aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Пароль</span>
+      <input v-model="user.Password"
+             placeholder="Пароль..."
+             type="password" class="form-control"
+             aria-label="Username"
+             aria-describedby="basic-addon1">
+    </div>
+  </base-modal>
+
 </template>
 
 <style>
@@ -122,3 +167,40 @@ nav a.router-link-exact-active {
 }
 
 </style>
+<script>
+//import BaseModal from "@/components/UI/modals/BaseModal";
+import BaseInput from "@/components/UI/inputs/BaseInput";
+import {useSettings} from "@/hooks/useSettings";
+import {useSettingInputs} from "@/hooks/useSettingInputs";
+import {useUser} from "@/hooks/useUser";
+export default {
+  components: {BaseInput},
+  data(){
+      return {
+        modalAttr:{
+          id: "Login",
+          modalTitle: "Авторизация",
+          buttonTitle: "Войти",
+
+        },
+        modalAttr1:{
+          id: "Register",
+          modalTitle: "Регистрация",
+          buttonTitle: "Зарегистрироваться",
+
+        },
+
+      }
+    },
+  setup(props) {
+    //TODO доделать форму на предмет сохранения пароля
+    const {user, login, register, signOut} = useUser()
+    return {
+      user, login, register, signOut
+    }
+  },
+  mounted() {
+    this.$store.dispatch("checkAuth")
+  }
+}
+</script>

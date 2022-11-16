@@ -75,6 +75,7 @@
 import SettingItem from "@/components/SettingItem";
 import {useSettings} from "@/hooks/useSettings";
 import {useSettingInputs} from "@/hooks/useSettingInputs";
+import {useUser} from "@/hooks/useUser";
 
 export default {
   name: "setting-list",
@@ -104,9 +105,11 @@ export default {
   setup(props) {
     const {settings, loadSettings, saveSettings } = useSettings()
     const {settingInputs} = useSettingInputs()
+    //const {user, login, signOut} = useUser()
     return {
       settings, saveSettings, loadSettings,
-      settingInputs
+      settingInputs,
+      //user, login, signOut
     }
   },
   mounted() {
@@ -118,6 +121,7 @@ export default {
     //        Code: '',
     //      })
     this.loadSettings(this.$store.getters.SETTINGS)
+    //this.signOut()
   }
 }
 //console.log(this.$store.getters.SETTINGS)

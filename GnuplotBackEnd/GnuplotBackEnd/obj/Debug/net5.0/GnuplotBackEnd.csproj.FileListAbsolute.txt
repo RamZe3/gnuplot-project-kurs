@@ -27,3 +27,4 @@ C:\Users\Рамиль\Desktop\kurs\Gnuplot-project\GnuplotBackEnd\GnuplotBackEnd
 C:\Users\Рамиль\Desktop\kurs\Gnuplot-project\GnuplotBackEnd\GnuplotBackEnd\obj\Debug\net5.0\ref\GnuplotBackEnd.dll
 C:\Users\Рамиль\Desktop\kurs\Gnuplot-project\GnuplotBackEnd\GnuplotBackEnd\obj\Debug\net5.0\GnuplotBackEnd.pdb
 C:\Users\Рамиль\Desktop\kurs\Gnuplot-project\GnuplotBackEnd\GnuplotBackEnd\obj\Debug\net5.0\GnuplotBackEnd.genruntimeconfig.cache
+C:\Users\Рамиль\Desktop\kurs\Gnuplot-project\GnuplotBackEnd\GnuplotBackEnd\bin\Debug\net5.0\DAL\JsonDAL\UsersBase.json

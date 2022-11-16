@@ -1,4 +1,7 @@
 //TODO не используется
+import {useCookies} from "vue3-cookies";
+import axios from 'axios'
+
 export const globalModule = {
     state: () => ({
         isAuth: false,
@@ -23,6 +26,9 @@ export const globalModule = {
         },
     },
     mutations: {
+        setIsAuth(state, isAuth){
+            state.isAuth = isAuth;
+        },
         setSettings(state, settings){
             state.settings = settings
         }
@@ -46,6 +52,19 @@ export const globalModule = {
             //TODO
             //context.commit('setSettings', settings);
         },
+
+        checkAuth: async (context) => {
+            const cookies = useCookies();
+            const login = cookies.cookies.get("Login")
+            const password = cookies.cookies.get("Password")
+            const response = await axios.get('http://localhost:3000/users/?login=' + login + "&password=" + password);
+            if (response.data.length === 1){
+                context.commit("setIsAuth", true)
+            }
+            else {
+                context.commit("setIsAuth", false)
+            }
+        },
     },
-    namespaced: true
+    //namespaced: true
 }

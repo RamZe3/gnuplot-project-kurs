@@ -14,8 +14,17 @@
         <e p="Controllers" t="Include">
           <e p="WeatherForecastController.cs" t="Include" />
         </e>
-        <e p="DAL" t="Include" />
+        <e p="DAL" t="Include">
+          <e p="Interfaces" t="Include">
+            <e p="UserDALInterface.cs" t="Include" />
+          </e>
+          <e p="JsonDAL" t="Include">
+            <e p="UserJsonDAL.cs" t="Include" />
+            <e p="UsersBase.json" t="Include" />
+          </e>
+        </e>
         <e p="Entities" t="Include">
+          <e p="ActiveUser.cs" t="Include" />
           <e p="GnuplotTemplate.cs" t="Include" />
         </e>
         <e p="GnuplotBackEnd.csproj" t="IncludeRecursive" />
