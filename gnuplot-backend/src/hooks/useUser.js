@@ -22,6 +22,7 @@ export function useUser() {
         const response = await axios.get('http://localhost:3000/users/?login=' + user.value.Login
             + "&password=" + user.value.Password);
         if (response.data.length === 1) {
+            localStorage.setItem("userID", response.data[0].id)
             store.commit("setIsAuth", true)
             cookies.cookies.set("Login", user.value.Login)
             cookies.cookies.set("Password", user.value.Password)
@@ -34,6 +35,7 @@ export function useUser() {
     const register = async () => {
         const response = await axios.get('http://localhost:3000/users/?login=' + user.value.Login);
         if (response.data.length === 0) {
+            localStorage.setItem("userID", user.value.id)
             store.commit("setIsAuth", true)
             const newUser = {
                 id: newGuid(),
@@ -49,7 +51,8 @@ export function useUser() {
         }
     }
 
-    const signOut = async () => {
+    const signOut = () => {
+        localStorage.removeItem("userID")
         cookies.cookies.remove("Login")
         cookies.cookies.remove("Password")
         store.commit("setIsAuth", false)

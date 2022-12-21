@@ -10,10 +10,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <router-link class="nav-link active" aria-current="page" to="/">Главная</router-link>
+              <router-link :active-class="active" class="nav-link" aria-current="page" to="/">Главная</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/about">Шаблоны</router-link>
+              <router-link class="nav-link" :active-class="active" to="/about" :class="{disabled: !this.$store.getters.ISAUTH}">Шаблоны</router-link>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -21,8 +21,10 @@
                 Профиль
               </a>
               <ul class="dropdown-menu">
-                <li><button class="dropdown-item" data-toggle="modal" data-target="#Login">Войти</button></li>
-                <li><button class="dropdown-item" data-toggle="modal" data-target="#Register">Зарегистрироваться</button></li>
+                <!--TODO-->
+                <li><a class="dropdown-item" v-if="this.$store.getters.ISAUTH">Привет, Рамиль</a></li>
+                <li><button class="dropdown-item" v-if="!this.$store.getters.ISAUTH" data-toggle="modal" data-target="#Login">Войти</button></li>
+                <li><button class="dropdown-item" v-if="!this.$store.getters.ISAUTH" data-toggle="modal" data-target="#Register">Зарегистрироваться</button></li>
                 <li>
                   <hr v-if="this.$store.getters.ISAUTH" class="dropdown-divider">
                 </li>
@@ -39,9 +41,9 @@
   </header>
   <main class="content ">
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Login">
+    <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Login">
       Launch demo modal
-    </button>
+    </button>-->
 
     <!-- Modal -->
     <!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -173,8 +175,9 @@ import BaseInput from "@/components/UI/inputs/BaseInput";
 import {useSettings} from "@/hooks/useSettings";
 import {useSettingInputs} from "@/hooks/useSettingInputs";
 import {useUser} from "@/hooks/useUser";
+import BaseLoading from "@/components/UI/loading/Baseloading";
 export default {
-  components: {BaseInput},
+  components: {BaseLoading, BaseInput},
   data(){
       return {
         modalAttr:{
@@ -199,7 +202,7 @@ export default {
       user, login, register, signOut
     }
   },
-  mounted() {
+  created() {
     this.$store.dispatch("checkAuth")
   }
 }

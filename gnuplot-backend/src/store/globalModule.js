@@ -1,12 +1,13 @@
 //TODO не используется
 import {useCookies} from "vue3-cookies";
 import axios from 'axios'
+import {useStore} from "vuex";
 
 export const globalModule = {
     state: () => ({
         isAuth: false,
-        userName: null,
-        isLoading: false,
+        userID: null,
+        isLoading: 0,
         isActiveError: false,
         errorMessage: null
     }),
@@ -16,7 +17,9 @@ export const globalModule = {
             return state.isAuth
         },
         ISLOADING: state => {
-            return state.isLoading
+            //console.log(state.isLoading.length > 0)
+            return state.isLoading !== 0
+            //return state.isLoading
         },
         ISACTIVEERROR: state => {
             return state.isActiveError
@@ -24,14 +27,30 @@ export const globalModule = {
         ERRORMESSAGE: state => {
             return state.errorMessage
         },
+        USERID: state => {
+            return state.userID
+        }
     },
     mutations: {
         setIsAuth(state, isAuth){
             state.isAuth = isAuth;
         },
+        setUserID(state, userID){
+            state.userID = userID;
+        },
         setSettings(state, settings){
             state.settings = settings
-        }
+        },
+        setLoading(state, bool){
+            if (bool){
+                state.isLoading++
+            }
+            else {
+                state.isLoading--
+            }
+            console.log(state.isLoading + "LOAD")
+            //state.isLoading = bool;
+        },
     },
     actions:{
         //TODO доделать получение из backend
@@ -54,16 +73,23 @@ export const globalModule = {
         },
 
         checkAuth: async (context) => {
+            const store = useStore()
+            store.commit("setLoading", true)
             const cookies = useCookies();
             const login = cookies.cookies.get("Login")
             const password = cookies.cookies.get("Password")
-            const response = await axios.get('http://localhost:3000/users/?login=' + login + "&password=" + password);
+            const response = await axios.get('http://localhost:3000/users/?login=' + login + "&password=" + password)
+                //.then(() => { store.commit("setLoading", false)});
             if (response.data.length === 1){
+                context.commit("setUserID", response.data[0].id)
                 context.commit("setIsAuth", true)
+                //setTimeout(context.commit("setUserID", response.data[0].id), 5000)
+                //context.commit("setIsAuth", true)
             }
             else {
                 context.commit("setIsAuth", false)
             }
+            store.commit("setLoading", false)
         },
     },
     //namespaced: true

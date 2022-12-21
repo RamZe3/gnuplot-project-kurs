@@ -1,14 +1,14 @@
 import {onMounted, onBeforeMount, ref} from "vue";
 
-export function useSettings(){
+export function useSettings() {
     const settings = ref(
         {
-        function: '',
-        Range1: '',
-        Range2: '',
-        Point: '',
-        Code: '',
-    })
+            function: '',
+            Range1: '',
+            Range2: '',
+            Point: '',
+            Code: '',
+        })
 
     //TODO сделать подгрузку и выгрузку
     //const loadSettings = async (settings) => {
@@ -18,7 +18,8 @@ export function useSettings(){
     //    //settings.value = settingsValue
     //}
 
-    const loadSettings =  (settingsValue) => {
+    const loadSettings = (settingsValue) => {
+        console.log(settingsValue)
         settings.value = settingsValue
     }
 

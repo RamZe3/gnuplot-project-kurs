@@ -1,38 +1,13 @@
 <template>
-  <h2>Gnupot Template</h2>
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Date</th>
-      <th scope="col">Handle</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-    </tbody>
-  </table>
+  <base-loading></base-loading>
+  <template-list></template-list>
 </template>
 <script>
+import {useTemplates} from "@/hooks/useTemplates";
+import TemplateList from "@/components/TemplateList";
+
 export default {
+  components: {TemplateList},
   //TODO логика загрузки шаблона
   //mounted() {
   //  this.$store.commit("setSettings", {
@@ -43,6 +18,14 @@ export default {
   //    Code: '',
   //  })
   //}
+  setup(props){
+    const {templates, loadTemplates} = useTemplates()
+    return { templates, loadTemplates}
+  },
+  mounted() {
+    //this.$store.dispatch("checkAuth")
+    //this.loadTemplates(this.$store.getters.USERID)
+  }
 }
 
 </script>

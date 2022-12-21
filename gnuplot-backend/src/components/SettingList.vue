@@ -1,8 +1,6 @@
 <template>
   <h2>Gnupot Settings</h2>
-  <div class="spinner-border text-primary" role="status">
-    <span class="sr-only"></span>
-  </div>
+  <base-loading></base-loading>
   <div class="row">
     <setting-item v-model:settingInput="settingInputs[0]"
                   v-model="settings.function"
