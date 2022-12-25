@@ -1,6 +1,12 @@
 <template>
   <h2>Gnupot Settings</h2>
   <base-loading></base-loading>
+  <div class="alert alert-danger" role="alert">
+    This is a danger alert—check it out!
+  </div>
+  <div class="alert alert-danger" role="alert">
+    This is a danger alert—check it out!
+  </div>
   <div class="row">
     <setting-item v-model:settingInput="settingInputs[0]"
                   v-model="settings.function"

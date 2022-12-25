@@ -23,8 +23,8 @@
               <ul class="dropdown-menu">
                 <!--TODO-->
                 <li><a class="dropdown-item" v-if="this.$store.getters.ISAUTH">Привет, Рамиль</a></li>
-                <li><button class="dropdown-item" v-if="!this.$store.getters.ISAUTH" data-toggle="modal" data-target="#Login">Войти</button></li>
-                <li><button class="dropdown-item" v-if="!this.$store.getters.ISAUTH" data-toggle="modal" data-target="#Register">Зарегистрироваться</button></li>
+                <li><button class="dropdown-item" @click="modalAttr.visible = true" v-if="!this.$store.getters.ISAUTH">Войти</button></li>
+                <li><button class="dropdown-item" @click="modalAttr1.visible = true" v-if="!this.$store.getters.ISAUTH">Зарегистрироваться</button></li>
                 <li>
                   <hr v-if="this.$store.getters.ISAUTH" class="dropdown-divider">
                 </li>
@@ -72,7 +72,8 @@
   </footer>
 
   <!-- modals -->
-  <base-modal v-model:modalAttr="modalAttr"
+  <base-modal v-if="!modalAttr1.visible"
+      v-model:modalAttr="modalAttr"
               v-bind:id="modalAttr.id"
               @modalMethod="login"
   >
@@ -95,7 +96,7 @@
     </div>
   </base-modal>
 
-  <base-modal v-model:modalAttr="modalAttr1"
+  <base-modal v-if="!modalAttr.visible" v-model:modalAttr="modalAttr1"
               v-bind:id="modalAttr1.id"
               @modalMethod="register"
   >
@@ -184,13 +185,14 @@ export default {
           id: "Login",
           modalTitle: "Авторизация",
           buttonTitle: "Войти",
+          visible: false,
 
         },
         modalAttr1:{
           id: "Register",
           modalTitle: "Регистрация",
           buttonTitle: "Зарегистрироваться",
-
+          visible: false,
         },
 
       }
@@ -205,5 +207,7 @@ export default {
   created() {
     this.$store.dispatch("checkAuth")
   }
+
 }
+
 </script>

@@ -1,0 +1,61 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "login": "test1",
+      "password": "test2"
+    },
+    {
+      "id": 2,
+      "login": "testasd2",
+      "password": "testasd"
+    },
+    {
+      "id": 3,
+      "login": "testzxc3",
+      "password": "testzxc"
+    },
+    {
+      "id": 4,
+      "login": "apiTest",
+      "password": "qwe"
+    },
+    {
+      "id": "5332831b-b008-4cf0-99dd-30dd0c45f321",
+      "login": "ahahah",
+      "password": "123"
+    }
+  ],
+  "templates": [
+    {
+      "id": "aaa",
+      "name" : "Test template",
+      "userId": "5332831b-b008-4cf0-99dd-30dd0c45f321",
+      "function": "test",
+      "Range1": "1",
+      "Range2": "2",
+      "Point": "point",
+      "Code": "print asd"
+    },
+    {
+      "id": "222",
+      "name" : "Test template",
+      "userId": "5332831b-b008-4cf0-99dd-30dd0c45f321",
+      "function": "test",
+      "Range1": "1",
+      "Range2": "2",
+      "Point": "point",
+      "Code": "print asd"
+    },
+    {
+      "id": "333",
+      "name" : "Test template",
+      "userId": "5332831b-b008-4cf0-99dd-30dd0c45f321",
+      "function": "test",
+      "Range1": "1",
+      "Range2": "2",
+      "Point": "point",
+      "Code": "print asd"
+    }
+  ]
+}
