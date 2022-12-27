@@ -2,30 +2,29 @@ import {ref} from "vue";
 import {useCookies} from "vue3-cookies";
 import axios from 'axios'
 import {useStore} from "vuex";
-
-function newGuid() {
-    return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-    )}
+import {newGuid} from "@/common/GuidLogic";
+import {API_URL, USERS_API_URL} from "@/common/API";
 
 export function useUser() {
     const user = ref(
         {
             id: '',
-            Login: '',
-            Password: '',
+            login: '',
+            email: '',
+            password: '',
         })
     const cookies = useCookies();
     const store = useStore()
 
     const login = async () => {
-        const response = await axios.get('http://localhost:3000/users/?login=' + user.value.Login
-            + "&password=" + user.value.Password);
+        //TODO логин с мылом
+        const response = await axios.get(API_URL + USERS_API_URL +'/?login=' + user.value.login
+            + "&password=" + user.value.password);
         if (response.data.length === 1) {
             localStorage.setItem("userID", response.data[0].id)
             store.commit("setIsAuth", true)
-            cookies.cookies.set("Login", user.value.Login)
-            cookies.cookies.set("Password", user.value.Password)
+            cookies.cookies.set("Login", user.value.login)
+            cookies.cookies.set("Password", user.value.password)
         } else {
             //TODO
             //store.commit("setIsAuth", false)
@@ -33,18 +32,19 @@ export function useUser() {
     }
 
     const register = async () => {
-        const response = await axios.get('http://localhost:3000/users/?login=' + user.value.Login);
+        const response = await axios.get(API_URL + USERS_API_URL +'/?login=' + user.value.login);
         if (response.data.length === 0) {
             localStorage.setItem("userID", user.value.id)
             store.commit("setIsAuth", true)
             const newUser = {
                 id: newGuid(),
-                login: user.value.Login,
-                password: user.value.Password
+                login: user.value.login,
+                password: user.value.password,
+                email: user.value.email
             }
-            await axios.post('http://localhost:3000/users/', newUser);
-            cookies.cookies.set("Login", user.value.Login)
-            cookies.cookies.set("Password", user.value.Password)
+            await axios.post(API_URL + USERS_API_URL, newUser);
+            cookies.cookies.set("Login", user.value.login)
+            cookies.cookies.set("Password", user.value.password)
         } else {
             //TODO
             //store.commit("setIsAuth", false)

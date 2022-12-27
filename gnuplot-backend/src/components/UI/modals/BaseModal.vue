@@ -7,9 +7,6 @@
           <h5 class="modal-title" id="exampleModalLabel">{{ modalAttr.modalTitle }}</h5>
         </div>
         <div class="modal-body">
-          <div class="alert alert-danger" role="alert">
-            This is a danger alert—check it out!
-          </div>
           <slot></slot>
         </div>
         <div class="modal-footer">

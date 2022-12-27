@@ -2,7 +2,7 @@
   <header class="header">
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Gnuplotter</a>
+        <router-link style="color: #2c3e50" to="/" class="navbar-brand">Gnuplotter</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
               </a>
               <ul class="dropdown-menu">
                 <!--TODO-->
-                <li><a class="dropdown-item" v-if="this.$store.getters.ISAUTH">Привет, Рамиль</a></li>
+                <li><a class="dropdown-item" v-if="this.$store.getters.ISAUTH">Привет, {{this.$store.getters.LOGIN}}</a></li>
                 <li><button class="dropdown-item" @click="modalAttr.visible = true" v-if="!this.$store.getters.ISAUTH">Войти</button></li>
                 <li><button class="dropdown-item" @click="modalAttr1.visible = true" v-if="!this.$store.getters.ISAUTH">Зарегистрироваться</button></li>
                 <li>
@@ -30,9 +30,6 @@
                 </li>
                 <li><button v-if="this.$store.getters.ISAUTH" class="dropdown-item" @click="signOut">Выйти</button></li>
               </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
             </li>
           </ul>
         </div>
@@ -75,11 +72,16 @@
   <base-modal v-if="!modalAttr1.visible"
       v-model:modalAttr="modalAttr"
               v-bind:id="modalAttr.id"
-              @modalMethod="login"
+              @modalMethod="loginV"
   >
+    <TransitionGroup name="list" tag="div">
+    <div v-for="error of v$.loginModel.$errors" :key="error.$property" class="alert alert-danger" role="alert">
+      <b>{{ error.$property }}</b> : {{ error.$message }}
+    </div>
+    </TransitionGroup>
     <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">Логин</span>
-      <input v-model="user.Login"
+      <input v-model="user.login"
              placeholder="Логин..."
              type="text" class="form-control"
              aria-label="Username"
@@ -88,7 +90,7 @@
 
     <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">Пароль</span>
-      <input v-model="user.Password"
+      <input v-model="user.password"
              placeholder="Пароль..."
              type="password" class="form-control"
              aria-label="Username"
@@ -98,11 +100,26 @@
 
   <base-modal v-if="!modalAttr.visible" v-model:modalAttr="modalAttr1"
               v-bind:id="modalAttr1.id"
-              @modalMethod="register"
+              @modalMethod="registerV"
   >
+    <TransitionGroup name="list" tag="div">
+      <div v-for="error of v$.registerModel.$errors" :key="error.$property" class="alert alert-danger" role="alert">
+        <b>{{ error.$property }}</b> : {{ error.$message }}
+      </div>
+    </TransitionGroup>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Email</span>
+      <input v-model="user.email"
+             placeholder="Email..."
+             type="mail" class="form-control"
+             aria-label="Username"
+             aria-describedby="basic-addon1">
+    </div>
+
     <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">Логин</span>
-      <input v-model="user.Login"
+      <input v-model="user.login"
              placeholder="Логин..."
              type="text" class="form-control"
              aria-label="Username"
@@ -111,8 +128,17 @@
 
     <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">Пароль</span>
-      <input v-model="user.Password"
+      <input v-model="user.password"
              placeholder="Пароль..."
+             type="password" class="form-control"
+             aria-label="Username"
+             aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Пароль еще раз</span>
+      <input v-model="registerModel.confirmPassword"
+             placeholder="Подтвердите Пароль..."
              type="password" class="form-control"
              aria-label="Username"
              aria-describedby="basic-addon1">
@@ -169,6 +195,16 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
 </style>
 <script>
 //import BaseModal from "@/components/UI/modals/BaseModal";
@@ -177,10 +213,16 @@ import {useSettings} from "@/hooks/useSettings";
 import {useSettingInputs} from "@/hooks/useSettingInputs";
 import {useUser} from "@/hooks/useUser";
 import BaseLoading from "@/components/UI/loading/Baseloading";
+import { useVuelidate } from '@vuelidate/core'
+import {required, email, minLength, sameAs} from '@vuelidate/validators'
+import {ref} from "vue";
 export default {
   components: {BaseLoading, BaseInput},
   data(){
       return {
+        v$: useVuelidate(),
+        loginModel: ref(this.user),
+        registerModel: {user: ref(this.user), confirmPassword: ''},
         modalAttr:{
           id: "Login",
           modalTitle: "Авторизация",
@@ -201,11 +243,54 @@ export default {
     //TODO доделать форму на предмет сохранения пароля
     const {user, login, register, signOut} = useUser()
     return {
-      user, login, register, signOut
+      user, login, register, signOut,
+    }
+  },
+  validations () {
+    return {
+      loginModel: {
+        login: { required,},
+        password: { required,},
+        // confirmPassword: { required, sameAsPassword: sameAs('password') }
+      },
+      registerModel: {
+        user: {
+          login: { required,
+            minLength: minLength(4),},
+          email: {required, email},
+          password: { required, minLength: minLength(6),},
+        },
+        confirmPassword: { sameAsPassword: sameAs(this.user.password), }
+      }
     }
   },
   created() {
     this.$store.dispatch("checkAuth")
+  },
+  methods:{
+    async loginV(){
+      const isFormCorrect = await this.v$.loginModel.$validate()
+      //console.log(isFormCorrect)
+      //this.v$.loginModel.$validate()
+      if(isFormCorrect){
+        this.login()
+        //TODO
+        this.modalAttr.visible = false
+        this.modalAttr1.visible = false
+      }
+    },
+
+    async registerV(){
+      const isFormCorrect = await this.v$.registerModel.$validate()
+      //console.log(isFormCorrect)
+      //this.v$.loginModel.$validate()
+      if(isFormCorrect){
+        this.register()
+        //TODO
+        this.modalAttr.visible = false
+        this.modalAttr1.visible = false
+      }
+    }
   }
 
 }

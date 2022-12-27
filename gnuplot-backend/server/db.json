@@ -24,12 +24,23 @@
       "id": "5332831b-b008-4cf0-99dd-30dd0c45f321",
       "login": "ahahah",
       "password": "123"
+    },
+    {
+      "id": "01da2c6e-f08f-41cd-ac3a-bc4682e6eff3",
+      "login": "ghjhg",
+      "password": "hjhjhghjg"
+    },
+    {
+      "id": "14ce137b-33ea-43fa-8de3-bee1d7741a32",
+      "login": "13212213",
+      "password": "123456",
+      "email": "ramilfitkulin@icloud.com"
     }
   ],
   "templates": [
     {
       "id": "aaa",
-      "name" : "Test template",
+      "name": "Test template",
       "userId": "5332831b-b008-4cf0-99dd-30dd0c45f321",
       "function": "test",
       "Range1": "1",
@@ -39,7 +50,7 @@
     },
     {
       "id": "222",
-      "name" : "Test template",
+      "name": "Test template",
       "userId": "5332831b-b008-4cf0-99dd-30dd0c45f321",
       "function": "test",
       "Range1": "1",
@@ -49,7 +60,7 @@
     },
     {
       "id": "333",
-      "name" : "Test template",
+      "name": "Test template",
       "userId": "5332831b-b008-4cf0-99dd-30dd0c45f321",
       "function": "test",
       "Range1": "1",

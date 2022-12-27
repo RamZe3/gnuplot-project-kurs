@@ -7,6 +7,7 @@ export const globalModule = {
     state: () => ({
         isAuth: false,
         userID: null,
+        login: '',
         isLoading: 0,
         isActiveError: false,
         errorMessage: null
@@ -15,6 +16,9 @@ export const globalModule = {
     getters: {
         ISAUTH: state => {
             return state.isAuth
+        },
+        LOGIN: state => {
+            return state.login
         },
         ISLOADING: state => {
             //console.log(state.isLoading.length > 0)
@@ -37,6 +41,9 @@ export const globalModule = {
         },
         setUserID(state, userID){
             state.userID = userID;
+        },
+        setLogin(state, login){
+            state.login = login;
         },
         setSettings(state, settings){
             state.settings = settings
@@ -83,6 +90,7 @@ export const globalModule = {
             if (response.data.length === 1){
                 context.commit("setUserID", response.data[0].id)
                 context.commit("setIsAuth", true)
+                context.commit("setLogin", login)
                 //setTimeout(context.commit("setUserID", response.data[0].id), 5000)
                 //context.commit("setIsAuth", true)
             }
