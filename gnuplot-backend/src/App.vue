@@ -110,7 +110,7 @@
 
     <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">Email</span>
-      <input v-model="user.email"
+      <input :class="'is-invalid'" v-model="user.email"
              placeholder="Email..."
              type="mail" class="form-control"
              aria-label="Username"

@@ -2,6 +2,7 @@
 import {useCookies} from "vue3-cookies";
 import axios from 'axios'
 import {useStore} from "vuex";
+import {API_URL, USERS_API_URL} from "@/common/API";
 
 export const globalModule = {
     state: () => ({
@@ -85,7 +86,7 @@ export const globalModule = {
             const cookies = useCookies();
             const login = cookies.cookies.get("Login")
             const password = cookies.cookies.get("Password")
-            const response = await axios.get('http://localhost:3000/users/?login=' + login + "&password=" + password)
+            const response = await axios.get(API_URL + USERS_API_URL + '/?login=' + login + "&password=" + password)
                 //.then(() => { store.commit("setLoading", false)});
             if (response.data.length === 1){
                 context.commit("setUserID", response.data[0].id)

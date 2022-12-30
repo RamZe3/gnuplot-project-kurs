@@ -7,6 +7,7 @@
   <div class="alert alert-danger" role="alert">
     This is a danger alert—check it out!
   </div>
+  <form type="submit">
   <div class="row">
     <setting-item v-model:settingInput="settingInputs[0]"
                   v-model="settings.function"
@@ -72,7 +73,8 @@
   <div class="row buttons">
     <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
   </div>
-  <h1>{{this.$store.getters.SETTINGS}}</h1>
+  </form>
+<!--  <h1>{{this.$store.getters.SETTINGS}}</h1>-->
 </template>
 
 <script>
