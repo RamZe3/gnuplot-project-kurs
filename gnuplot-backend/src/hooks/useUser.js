@@ -5,7 +5,6 @@ import {useStore} from "vuex";
 import {getHash, newGuid} from "@/common/GuidLogic";
 import {API_URL, USERS_API_URL} from "@/common/API";
 
-//TODO чекаус логин не изменияется при регистрации
 export function useUser() {
     const user = ref(
         {
@@ -18,16 +17,20 @@ export function useUser() {
     const store = useStore()
 
     const login = async () => {
-        //TODO логин с мылом
+        console.log(user.value)
+        //TODO email когда бек будет
         const response = await axios.get(API_URL + USERS_API_URL +'/?login=' + user.value.login
-            + "&password=" + getHash(user.value.password));
+            + "&password=" + getHash(user.value.password))
+
         if (response.data.length === 1) {
             localStorage.setItem("userID", response.data[0].id)
             store.commit("setIsAuth", true)
             cookies.cookies.set("Login", user.value.login)
             cookies.cookies.set("Password", getHash(user.value.password))
+            store.commit("setLogin", user.value.login)
+            return ""
         } else {
-            //TODO
+            return "Неверно указан логин или пароль!"
             //store.commit("setIsAuth", false)
         }
     }
@@ -46,8 +49,10 @@ export function useUser() {
             await axios.post(API_URL + USERS_API_URL, newUser);
             cookies.cookies.set("Login", user.value.login)
             cookies.cookies.set("Password", getHash(user.value.password))
+            store.commit("setLogin", user.value.login)
+            return ""
         } else {
-            //TODO
+            return "Такой пользователь уже существует!"
             //store.commit("setIsAuth", false)
         }
     }
@@ -57,10 +62,9 @@ export function useUser() {
         cookies.cookies.remove("Login")
         cookies.cookies.remove("Password")
         store.commit("setIsAuth", false)
+        store.commit("setLogin", '')
 
     }
-
-    //computed(login)
 
     return {
         user, login, register, signOut

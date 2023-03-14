@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Рамиль\\Desktop\\kurs\\Gnuplot-project\\GnuplotBackEnd\\GnuplotBackEnd\\GnuplotBackEnd.csproj": {}
+    "C:\\Users\\Ramil\\Desktop\\Projects\\gnuplot-project-kurs\\GnuplotBackEnd\\GnuplotBackEnd\\GnuplotBackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Рамиль\\Desktop\\kurs\\Gnuplot-project\\GnuplotBackEnd\\GnuplotBackEnd\\GnuplotBackEnd.csproj": {
+    "C:\\Users\\Ramil\\Desktop\\Projects\\gnuplot-project-kurs\\GnuplotBackEnd\\GnuplotBackEnd\\GnuplotBackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Рамиль\\Desktop\\kurs\\Gnuplot-project\\GnuplotBackEnd\\GnuplotBackEnd\\GnuplotBackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\Ramil\\Desktop\\Projects\\gnuplot-project-kurs\\GnuplotBackEnd\\GnuplotBackEnd\\GnuplotBackEnd.csproj",
         "projectName": "GnuplotBackEnd",
-        "projectPath": "C:\\Users\\Рамиль\\Desktop\\kurs\\Gnuplot-project\\GnuplotBackEnd\\GnuplotBackEnd\\GnuplotBackEnd.csproj",
-        "packagesPath": "C:\\Users\\Рамиль\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Рамиль\\Desktop\\kurs\\Gnuplot-project\\GnuplotBackEnd\\GnuplotBackEnd\\obj\\",
+        "projectPath": "C:\\Users\\Ramil\\Desktop\\Projects\\gnuplot-project-kurs\\GnuplotBackEnd\\GnuplotBackEnd\\GnuplotBackEnd.csproj",
+        "packagesPath": "C:\\Users\\Ramil\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ramil\\Desktop\\Projects\\gnuplot-project-kurs\\GnuplotBackEnd\\GnuplotBackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Рамиль\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Ramil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -49,7 +51,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -61,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

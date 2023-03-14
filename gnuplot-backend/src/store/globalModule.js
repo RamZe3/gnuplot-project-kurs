@@ -1,4 +1,3 @@
-//TODO не используется
 import {useCookies} from "vue3-cookies";
 import axios from 'axios'
 import {useStore} from "vuex";
@@ -13,7 +12,6 @@ export const globalModule = {
         isActiveError: false,
         errorMessage: null
     }),
-    //TODO
     getters: {
         ISAUTH: state => {
             return state.isAuth

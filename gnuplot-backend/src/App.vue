@@ -21,7 +21,6 @@
                 Профиль
               </a>
               <ul class="dropdown-menu">
-                <!--TODO-->
                 <li><a class="dropdown-item" v-if="this.$store.getters.ISAUTH">Привет, {{this.$store.getters.LOGIN}}</a></li>
                 <li><button class="dropdown-item" @click="modalAttr.visible = true" v-if="!this.$store.getters.ISAUTH">Войти</button></li>
                 <li><button class="dropdown-item" @click="modalAttr1.visible = true" v-if="!this.$store.getters.ISAUTH">Зарегистрироваться</button></li>
@@ -78,6 +77,9 @@
     <div v-for="error of v$.loginModel.$errors" :key="error.$property" class="alert alert-danger" role="alert">
       <b>{{ error.$property }}</b> : {{ error.$message }}
     </div>
+      <div v-for="(error,index) of loginErrors" :key="index" class="alert alert-danger" role="alert">
+        {{ error }}
+      </div>
     </TransitionGroup>
     <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">Логин</span>
@@ -105,6 +107,9 @@
     <TransitionGroup name="list" tag="div">
       <div v-for="error of v$.registerModel.$errors" :key="error.$property" class="alert alert-danger" role="alert">
         <b>{{ error.$property }}</b> : {{ error.$message }}
+      </div>
+      <div v-for="(error,index) of registerErrors" :key="index" class="alert alert-danger" role="alert">
+        {{ error }}
       </div>
     </TransitionGroup>
 
@@ -237,6 +242,10 @@ export default {
           visible: false,
         },
 
+        //VALIDATE
+        loginErrors: [],
+        registerErrors: [],
+
       }
     },
   setup(props) {
@@ -268,25 +277,34 @@ export default {
     this.$store.dispatch("checkAuth")
   },
   methods:{
+
     async loginV(){
+      this.loginErrors = []
       const isFormCorrect = await this.v$.loginModel.$validate()
       //console.log(isFormCorrect)
       //this.v$.loginModel.$validate()
       if(isFormCorrect){
-        this.login()
-        //TODO
+        let error = await this.login()
+        if (error !== ""){
+          this.loginErrors.push(error)
+          return
+        }
         this.modalAttr.visible = false
         this.modalAttr1.visible = false
       }
     },
 
     async registerV(){
+      this.registerErrors = []
       const isFormCorrect = await this.v$.registerModel.$validate()
       //console.log(isFormCorrect)
       //this.v$.loginModel.$validate()
       if(isFormCorrect){
-        this.register()
-        //TODO
+        let error = await this.register()
+        if (error !== ""){
+          this.registerErrors.push(error)
+          return
+        }
         this.modalAttr.visible = false
         this.modalAttr1.visible = false
       }
